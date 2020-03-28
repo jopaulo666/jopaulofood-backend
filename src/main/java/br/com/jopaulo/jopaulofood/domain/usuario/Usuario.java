@@ -2,6 +2,9 @@ package br.com.jopaulo.jopaulofood.domain.usuario;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +13,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@MappedSuperclass
 public class Usuario implements Serializable{
 
 	@EqualsAndHashCode.Include
+	@Id
 	private Integer id;
 	
 	private String nome;

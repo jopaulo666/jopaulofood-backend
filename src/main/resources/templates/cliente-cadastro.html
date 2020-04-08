@@ -16,8 +16,10 @@ and open the template in the editor.
 	            
 	            <div id="msgSucesso">Exemplo de mensagem de sucesso</div> <br>
 	            
-	            <form method="post" th:object="${cliente}" th:action="@{/public/cliente/save}">
+	            <form method="post" th:object="${cliente}" th:action="${!editMode} ? @{/public/cliente/save} : @{/cliente/save}">
 	                <fieldset>
+	                	<input type="hidden" th:field="*{id}">
+	                
 	                    <label for="nome">Nome: </label><br>
 	                    <input type="text" id="nome" name="nome" placeholder="Nome" th:field="*{nome}"><br/><br/>
 	
@@ -36,7 +38,7 @@ and open the template in the editor.
 	                    <label for="senha">Senha: </label><br>
 	                    <input type="password" id="senha" name="senha" placeholder="****" th:field="*{senha}"><br><br>
 	
-	                    <input type="submit" value="Cadastrar"><br><br>
+	                    <input type="submit" th:value="${!editMode} ? 'Cadastrar' : 'Editar'"><br><br>
 	
 	                    <div id="msgErro">Exemplo de mensagem de erro</div><br><br>
 	                </fieldset>

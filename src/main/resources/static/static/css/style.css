@@ -168,6 +168,6 @@ div#msgSucesso{
     color: white;
     padding: 5px;
 }
-.inputErro{
+.inputError{
     border: 2px solid red;
 }

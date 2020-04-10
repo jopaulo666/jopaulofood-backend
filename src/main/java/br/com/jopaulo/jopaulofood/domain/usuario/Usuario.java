@@ -32,12 +32,12 @@ public class Usuario implements Serializable{
 	@Size(max = 80, message = "O nome não pode ter mais de 80 caracteres")
 	private String nome;
 	
-	@NotBlank(message = "O nome não pode ser vazio")
+	@NotBlank(message = "O e-mail não pode ser vazio")
 	@Size(max = 60, message = "O e-mail não pode ter mais de 60 caracteres")
 	@Email(message = "E-mail inválido")
 	private String email;	
 	
-	@NotBlank(message = "A senha não pode ser vazio")
+	@NotBlank(message = "A senha não pode ser vazia")
 	@Size(max = 80, message = "A senha não pode ter mais de 80 caracteres")
 	private String senha;
 	

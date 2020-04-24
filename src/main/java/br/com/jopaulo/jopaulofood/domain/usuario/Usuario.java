@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import br.com.jopaulo.jopaulofood.util.StringUtils;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,4 +46,8 @@ public class Usuario implements Serializable{
 	@Pattern(regexp = "[0-9]{10,11}", message = "Telefone inválido")
 	@Column(length = 11, nullable = false)
 	private String fone;
+	
+	public void encrypPassword() {
+		this.senha = StringUtils.encrypt(senha);
+	}
 }

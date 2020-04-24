@@ -17,13 +17,13 @@ import lombok.Setter;
 @Entity
 public class Cliente extends Usuario{
 
-	@NotBlank(message = "O CPF não pode ser vazio")
-	@Pattern(regexp = "[0-9] {11}", message = "CPF inválido")
+	@NotBlank(message = "O CPF é obrigatório")
+	@Pattern(regexp = "[0-9]{10,11}", message = "CPF inválido")
 	@Column(length = 11, nullable = false)
 	private String cpf;
 	
-	@NotBlank(message = "O CEP não pode ser vazio")
-	@Pattern(regexp = "[0-9] {8}", message = "CEP inválido")
+	@NotBlank(message = "O CEP é obrigatório")
+	@Pattern(regexp = "[0-9]{8}", message = "CEP inválido")
 	@Column(length = 8)
 	private String cep;
 }

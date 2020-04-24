@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.jopaulo.jopaulofood.ValidationException;
 import br.com.jopaulo.jopaulofood.application.ClienteService;
 import br.com.jopaulo.jopaulofood.domain.cliente.Cliente;
 
@@ -32,8 +33,12 @@ public class PublicController {
 	public String saveCliente(@ModelAttribute("cliente") @Valid Cliente cliente, Errors errors, Model model) {
 		
 		if (!errors.hasErrors()) {
-			clienteService.saveCliente(cliente);
-			model.addAttribute("msg", "Cliente salvo com sucesso");
+			try {
+				clienteService.saveCliente(cliente);
+				model.addAttribute("msg", "Cliente salvo com sucesso!");
+			} catch (ValidationException e) {
+				errors.rejectValue("email", null, e.getMessage());
+			}
 		}
 		
 		ControllerHelper.setEditModel(model, false);

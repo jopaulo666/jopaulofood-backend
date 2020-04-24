@@ -28,21 +28,21 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotBlank(message = "O nome não pode ser vazio")
+	@NotBlank(message = "O nome é obrigatório")
 	@Size(max = 80, message = "O nome não pode ter mais de 80 caracteres")
 	private String nome;
 	
-	@NotBlank(message = "O e-mail não pode ser vazio")
+	@NotBlank(message = "O e-mail é obrigatório")
 	@Size(max = 60, message = "O e-mail não pode ter mais de 60 caracteres")
 	@Email(message = "E-mail inválido")
 	private String email;	
 	
-	@NotBlank(message = "A senha não pode ser vazia")
+	@NotBlank(message = "A senha é obrigatória")
 	@Size(max = 80, message = "A senha não pode ter mais de 80 caracteres")
 	private String senha;
 	
-	@NotBlank(message = "O telefone não pode ser vazio")
-	@Pattern(regexp = "[0-9] {10,11}", message = "Telefone inválido")
+	@NotBlank(message = "O telefone é obrigatório")
+	@Pattern(regexp = "[0-9]{10,11}", message = "Telefone inválido")
 	@Column(length = 11, nullable = false)
 	private String fone;
 }

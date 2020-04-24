@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.jopaulo.jopaulofood.ValidationException;
 import br.com.jopaulo.jopaulofood.application.ClienteService;
+import br.com.jopaulo.jopaulofood.application.ValidationException;
 import br.com.jopaulo.jopaulofood.domain.cliente.Cliente;
 
 @Controller
@@ -27,6 +27,13 @@ public class PublicController {
 		model.addAttribute("cliente", new Cliente());
 		ControllerHelper.setEditModel(model, false);
 		return "cliente-cadastro";
+	}
+	
+	@GetMapping("/restaurante/new")
+	public String newRestaurante(Model model) {		
+		model.addAttribute("restaurante", new Cliente());
+		ControllerHelper.setEditModel(model, false);
+		return "restaurante-cadastro";
 	}
 	
 	@PostMapping(path = "/cliente/save")

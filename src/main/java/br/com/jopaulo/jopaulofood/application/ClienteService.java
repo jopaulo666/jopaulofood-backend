@@ -3,9 +3,8 @@ package br.com.jopaulo.jopaulofood.application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.jopaulo.jopaulofood.ValidationException;
-import br.com.jopaulo.jopaulofood.domain.cliente.Cliente;
 import br.com.jopaulo.jopaulofood.domain.cliente.ClienteRepository;
+import br.com.jopaulo.jopaulofood.domain.cliente.Cliente;
 
 @Service
 public class ClienteService {

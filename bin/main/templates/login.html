@@ -12,7 +12,11 @@ and open the template in the editor.
 		<div layout:fragment="content">
 			<div>
 				<img th:src="@{static/imagens/bf_iconeUsuario.png}" id="imgUsuario">
+				
 				<h1>Login</h1>
+				
+				<div id="msgErro">Mensagem de erro</div><br>
+				
 				<form method="post" action="">
 					<fieldset style="background-color: #7bc2e5"><br>
 						<input type="text" name="email" placeholder="E-mail">
@@ -21,13 +25,15 @@ and open the template in the editor.
 					</fieldset>
 				</form><br>
 				
-				<div id="msgErro">Mensagem de erro</div><br>
 				
 				<form method="get" th:action="@{/public/cliente/new}">
 					<input type="submit" value="Novo cliente">
 				</form>
 				
-				<input type="button" value="novo Restaurante" onclick="location.href='restauranteCadastro.html';"> <br>
+				<form method="get" th:action="@{/public/restaurante/new}">
+					<input type="submit" value="Novo restaurante">
+				</form>	
+				<br>		
 			</div>
 		</div>
 	</body>

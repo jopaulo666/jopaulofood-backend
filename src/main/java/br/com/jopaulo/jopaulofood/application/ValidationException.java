@@ -1,4 +1,4 @@
-package br.com.jopaulo.jopaulofood;
+package br.com.jopaulo.jopaulofood.application;
 
 @SuppressWarnings("serial")
 public class ValidationException extends Exception{

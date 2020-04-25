@@ -12,22 +12,47 @@ and open the template in the editor.
 		<div layout:fragment="content">
 	        <div>
 	            <h1>Cadastro de Restaurante</h1>
-	            <div>Exemplo de mesnagem de sucesso</div>
+	            
+	            <div id="msgSucesso" th:if="${msg != null}">
+	            	<span th:text="${msg}"></span>
+	            </div>
 	            <br>
-	            <form method="post" action="">
+	            
+	            <form method="post" th:object="${restaurante}" th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}">
 	                <fieldset>
-	                    <label for="nome">Nome: </label><br>
-	                    <input type="text" id="nome" name="nome" placeholder="Nome"><br><br>
-	
+	                	<input type="hidden" th:field="*{id}">	  
+	                	
+	                	<div id="msgErro" th:if="${#fields.hasErrors('nome')}">
+	                    	<span th:errors="*{nome}"></span>
+                    	</div><br>
+	                    <label for="nome">Nome do Restaurante: </label><br>
+	                    <input type="text" id="nome" name="nome" placeholder="Nome do Restauante"
+	                    	th:field="*{nome}" th:classappend="${#fields.hasErrors('nome')} ? 'inputError' : '' "><br><br>
+						
+						<div id="msgErro" th:if="${#fields.hasErrors('cnpj')}">
+	                    	<span th:errors="*{cnpj}"></span>
+                    	</div><br>
 	                    <label for="cnpj">CNPJ: </label><br>
-	                    <input type="text" id="cnpj" name="cnpj" placeholder="99.999.999/9999-99"><br><br>
-	
+	                    <input type="text" id="cnpj" name="cnpj" placeholder="99.999.999/9999-99"
+	                    	th:field="*{cnpj}" th:classappend="${#fields.hasErrors('cnpj')} ? 'inputError' : '' "><br><br>
+						
+						<div id="msgErro" th:if="${#fields.hasErrors('email')}">
+	                    	<span th:errors="*{email}"></span>
+                    	</div><br>
 	                    <label for="email">E-mail: </label><br>
-	                    <input type="email" id="email" name="email" placeholder="você@seuemail.com"><br><br>
-	
+	                    <input type="email" id="email" name="email" placeholder="você@seuemail.com"
+	                    	th:field="*{email}" th:classappend="${#fields.hasErrors('email')} ? 'inputError' : '' "><br><br>
+						
+						<div id="msgErro" th:if="${#fields.hasErrors('cep')}">
+	                    	<span th:errors="*{cep}"></span>
+                    	</div><br>
 	                    <label for="cep">CEP: </label><br>
-	                    <input type="text" id="cep" name="cep" placeholder="99999-999"><br><br>
-	
+	                    <input type="text" id="cep" name="cep" placeholder="99999-999"
+	                    	th:field="*{cep}" th:classappend="${#fields.hasErrors('cep')} ? 'inputError' : '' "><br><br>
+						
+<!-- 						<div id="msgErro" th:if="${#fields.hasErrors('categoria')}"> -->
+<!-- 	                    	<span th:errors="*{categoria}"></span> -->
+<!--                     	</div><br> -->
 	                    <label>Categoria de comida</label><br>
 	                    <select name="categoria" id="categoria">
 	                        <option>Pizza</option>
@@ -35,12 +60,20 @@ and open the template in the editor.
 	                        <option>lanche</option>
 	                        <option>Salada</option>
 	                    </select><br><br>
-	
+						
+						<div id="msgErro" th:if="${#fields.hasErrors('logo')}">
+	                    	<span th:errors="*{logo}"></span>
+                    	</div><br>
 	                    <label for="logo">Logotipo: </label><br>
-	                    <input type="file" id="logo" name="logo" placeholder="Selecionar"><br><br>
-	
+	                    <input type="file" id="logo" name="logo" placeholder="Selecionar"
+	                    	th:field="*{logo}" th:classappend="${#fields.hasErrors('logo')} ? 'inputError' : '' "><br><br>
+						
+						<div id="msgErro" th:if="${#fields.hasErrors('senha')}">
+	                    	<span th:errors="*{senha}"></span>
+                    	</div><br>
 	                    <label for="senha">Senha: </label><br>
-	                    <input type="password" id="senha" name="senha" placeholder="Senha"><br><br>
+	                    <input type="password" id="senha" name="senha" placeholder="Senha"
+	                    	th:field="*{senha}" th:classappend="${#fields.hasErrors('senha')} ? 'inputError' : '' "><br><br>
 	
 	                    <input type="button" value="Cadastrar"><br><br>
 	

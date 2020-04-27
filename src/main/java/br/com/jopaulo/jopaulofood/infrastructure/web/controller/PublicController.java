@@ -1,7 +1,5 @@
 package br.com.jopaulo.jopaulofood.infrastructure.web.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.jopaulo.jopaulofood.application.ClienteService;
+import br.com.jopaulo.jopaulofood.application.RestauranteService;
 import br.com.jopaulo.jopaulofood.application.ValidationException;
 import br.com.jopaulo.jopaulofood.domain.cliente.Cliente;
-import br.com.jopaulo.jopaulofood.domain.restaurante.CategoriaRestaurante;
 import br.com.jopaulo.jopaulofood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.jopaulo.jopaulofood.domain.restaurante.Restaurante;
 
@@ -26,6 +24,9 @@ public class PublicController {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private RestauranteService restauranteService;
 	
 	@Autowired
 	private CategoriaRestauranteRepository categoriaRestauranteRepository;
@@ -59,5 +60,21 @@ public class PublicController {
 		
 		ControllerHelper.setEditModel(model, false);
 		return "cliente-cadastro";
+	}
+	
+	@PostMapping(path = "/restaurante/save")
+	public String saveRestaurante(@ModelAttribute("restaurante") @Valid Restaurante restaurante, Errors errors, Model model) {
+		
+		if (!errors.hasErrors()) {
+			try {
+				restauranteService.saveRestaurante(restaurante);
+				model.addAttribute("msg", "Restaurante salvo com sucesso!");
+			} catch (ValidationException e) {
+				errors.rejectValue("email", null, e.getMessage());
+			}
+		}
+		
+		ControllerHelper.setEditModel(model, false);
+		return "restaurante-cadastro";
 	}
 }

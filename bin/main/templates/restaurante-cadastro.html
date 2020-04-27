@@ -18,8 +18,10 @@ and open the template in the editor.
 	            </div>
 	            <br>
 	            
-	            <form method="post" th:object="${restaurante}"
-	            	th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}">
+	            <form method="post" 
+	            	th:object="${restaurante}"
+	            	th:action="${!editMode} ? @{/public/restaurante/save} : @{/restaurante/save}"
+	            	enctype="multipart/form-data">
 	                <fieldset>
 	                	<input type="hidden" th:field="*{id}">	  
 	                	
@@ -89,20 +91,13 @@ and open the template in the editor.
 	                    	th:field="*{tempoEntregaBase}" 
 	                    	th:classappend="${#fields.hasErrors('tempoEntregaBase')} ? 'inputError' : '' "><br><br>
 	                    	
-                    	<div id="mensagemDeErro" th:if="${#fields.hasErrors('logotipo')}">
-								<span th:errors="*{logotipo}"></span>
-							</div>
-                    	<div th:if="${!editMode}">
-							<label for="logotipo">Logotipo: </label><br />	
-							<input type="file" 
-								id="logotipo" 
-								name="logotipo" 
-								placeholder="Selecionar..."
-								th:field="*{logotipo}" 
-								th:classappend="${#fields.hasErrors('logotipo')} ? 'inputError' : ''"/>
-							<br /><br />
-						</div>
-						
+						<label for="logotipo">Logotipo: </label><br />	
+						<input type="file" 
+							id="logotipo" 
+							name="logotipo" 
+							placeholder="Selecionar..."
+							th:field="*{logotipoFile}"><br /><br />
+					
 						<div id="msgErro" th:if="${#fields.hasErrors('categorias')}">
 	                    	<span th:errors="*{categorias}"></span>
                     	</div><br>
@@ -129,7 +124,9 @@ and open the template in the editor.
 	                    	th:field="*{senha}" 
 	                    	th:classappend="${#fields.hasErrors('senha')} ? 'inputError' : '' "><br><br>
 	
-	                    <input type="button" value="Cadastrar"><br><br>
+	                    <input type="hidden" name="senha" value="*" th:if="${!editMode}">
+	
+	                    <input type="submit" th:value="${!editMode} ? 'Cadastrar' : 'Editar'"><br><br>
 	
 	                    <div>Exemplo de mesnagem de erro</div>
 	                    <br><br>

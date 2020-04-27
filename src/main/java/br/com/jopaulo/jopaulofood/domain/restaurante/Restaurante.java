@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -21,6 +22,7 @@ import br.com.jopaulo.jopaulofood.domain.usuario.Usuario;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @SuppressWarnings("serial")
 @Getter
@@ -32,7 +34,7 @@ public class Restaurante extends Usuario{
 
 	@NotBlank(message = "O CNPJ é obrigatório")
 	@Pattern(regexp = "[0-9]{14}", message = "CNPJ inválido")
-	@Column(length = 11, nullable = false)
+	@Column(length = 14, nullable = false)
 	private String cnpj;
 	
 	@Size(max = 80)
@@ -41,18 +43,20 @@ public class Restaurante extends Usuario{
 	@NotNull(message = "Taxa de entrega é obrigatório")
 	@Min(0)
 	@Max(99)
-	private BigDecimal taxaEntregaBigDecimal;
+	private BigDecimal taxaEntrega;
 	
 	@NotNull(message = "Tempo de entrega é obrigatório")
 	@Min(0)
 	@Max(120)
 	private Integer tempoEntregaBase;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "restaurante_has_categoria",
 			joinColumns = @JoinColumn(name = "restaurante_id"),
 			inverseJoinColumns = @JoinColumn(name = "categoria_restaurante")
 		)
+	@Size(min = 1, message = "O restaurante precisa ter uma ou mais categoria")
+	@ToString.Exclude
 	private Set<CategoriaRestaurante> categorias = new HashSet<>(0);
 }

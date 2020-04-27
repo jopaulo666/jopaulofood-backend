@@ -1,5 +1,7 @@
 package br.com.jopaulo.jopaulofood.infrastructure.web.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.jopaulo.jopaulofood.application.ClienteService;
 import br.com.jopaulo.jopaulofood.application.ValidationException;
 import br.com.jopaulo.jopaulofood.domain.cliente.Cliente;
+import br.com.jopaulo.jopaulofood.domain.restaurante.CategoriaRestaurante;
+import br.com.jopaulo.jopaulofood.domain.restaurante.CategoriaRestauranteRepository;
+import br.com.jopaulo.jopaulofood.domain.restaurante.Restaurante;
 
 @Controller
 @RequestMapping(path = "/public")
@@ -21,6 +26,9 @@ public class PublicController {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private CategoriaRestauranteRepository categoriaRestauranteRepository;
 
 	@GetMapping("/cliente/new")
 	public String newCliente(Model model) {		
@@ -30,9 +38,10 @@ public class PublicController {
 	}
 	
 	@GetMapping("/restaurante/new")
-	public String newRestaurante(Model model) {		
-		model.addAttribute("restaurante", new Cliente());
+	public String newRestaurante(Model model) {
+		model.addAttribute("restaurante", new Restaurante());
 		ControllerHelper.setEditModel(model, false);
+		ControllerHelper.addCategoriasToRequest(categoriaRestauranteRepository, model);		
 		return "restaurante-cadastro";
 	}
 	

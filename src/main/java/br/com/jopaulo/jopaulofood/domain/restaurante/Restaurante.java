@@ -21,6 +21,7 @@ import javax.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.jopaulo.jopaulofood.domain.usuario.Usuario;
+import br.com.jopaulo.jopaulofood.infrastructure.web.validator.UploadContraint;
 import br.com.jopaulo.jopaulofood.util.FileType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -43,6 +44,7 @@ public class Restaurante extends Usuario{
 	@Size(max = 80)
 	private String logotipo;
 	
+	@UploadContraint(acceptedTypes = FileType.PNG, message = "Arquivo inválido. Use somente arquivos com extensão PNG")
 	private transient MultipartFile logotipoFile;
 	
 	@NotNull(message = "Taxa de entrega é obrigatório")

@@ -135,6 +135,8 @@ div#divCategoriaGeral{
     overflow: hidden;
     display: flex;
     justify-content: space-between;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 img#imgCategoriaComida{
     height: 50%;

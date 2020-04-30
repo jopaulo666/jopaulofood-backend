@@ -58,8 +58,8 @@ and open the template in the editor.
 	                    	th:field="*{email}" 
 	                    	th:classappend="${#fields.hasErrors('email')} ? 'inputError' : '' "><br><br>
 	                    	
-                    	<div id="msgErro" th:if="${#fields.hasErrors('email')}">
-	                    	<span th:errors="*{email}"></span>
+                    	<div id="msgErro" th:if="${#fields.hasErrors('fone')}">
+	                    	<span th:errors="*{fone}"></span>
                     	</div><br>
 	                    <label for="fone">Telefone: </label><br>
 	                    <input type="text" 

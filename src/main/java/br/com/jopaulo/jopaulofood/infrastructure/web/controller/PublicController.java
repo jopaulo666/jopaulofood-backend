@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.jopaulo.jopaulofood.application.ClienteService;
-import br.com.jopaulo.jopaulofood.application.RestauranteService;
-import br.com.jopaulo.jopaulofood.application.ValidationException;
+import br.com.jopaulo.jopaulofood.application.service.ClienteService;
+import br.com.jopaulo.jopaulofood.application.service.RestauranteService;
+import br.com.jopaulo.jopaulofood.application.service.ValidationException;
 import br.com.jopaulo.jopaulofood.domain.cliente.Cliente;
 import br.com.jopaulo.jopaulofood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.jopaulo.jopaulofood.domain.restaurante.Restaurante;

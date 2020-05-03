@@ -87,8 +87,8 @@ and open the template in the editor.
 						
 						<div th:if="${!editMode}">
 							<div id="msgErro" th:if="${#fields.hasErrors('senha')}">
-		                    	<span th:errors="*{senha}"></span>
-	                    	</div><br>
+	                    		<span th:errors="*{senha}"></span>
+                    		</div><br>
 		                    <label for="senha">Senha: </label><br>
 		                    <input type="password" 
 		                    	id="senha" 

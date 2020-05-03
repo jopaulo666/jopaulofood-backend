@@ -15,13 +15,15 @@ and open the template in the editor.
 				
 				<h1>Login</h1>
 				
-				<div id="msgErro">Mensagem de erro</div><br>
+				<div id="msgErro" th:if="${msg != null}">
+					<span th:text="msg"></span>
+				</div><br>
 				
-				<form method="post" action="">
+				<form method="post" th:action="@{/login}">
 					<fieldset style="background-color: #7bc2e5"><br>
-						<input type="text" name="email" placeholder="E-mail">
-						<input type="password" name="senha" placeholder="Senha">
-						<input type="button" value="Entrar" onclick="location.href='clienteHome.html';">
+						<input type="text" name="username" placeholder="Seu e-mail">
+						<input type="password" name="password" placeholder="Sua senha">
+						<input type="submit" value="Entrar">
 					</fieldset>
 				</form><br>
 				

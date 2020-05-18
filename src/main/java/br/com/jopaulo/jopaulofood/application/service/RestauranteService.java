@@ -42,7 +42,7 @@ public class RestauranteService {
 	}
 	
 	private boolean validateEmail(String email, Integer id) {
-		Cliente cliente =clienteRepository.findByEmail(email);
+		Cliente cliente = clienteRepository.findByEmail(email);
 		
 		if (cliente !=null) {
 			return false;

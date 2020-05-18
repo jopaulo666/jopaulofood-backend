@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -67,11 +68,13 @@ public class Restaurante extends Usuario{
 	@ToString.Exclude
 	private Set<CategoriaRestaurante> categorias = new HashSet<>(0);
 	
+	@OneToMany(mappedBy = "restaurante")
+	private Set<ItemCardapio> itemCardapios = new HashSet<>(0);
+	
 	public void setLogotipoFileName(){
 		if (getId() == null) {
 			throw new IllegalStateException("É preciso gravar o produto");
 		}
-		//TODO trocar a forma de ler a extensão
 		this.logotipo = String.format("%04d-log.%s", getId(), getId(), FileType.of(logotipoFile.getContentType()).getExtension());
 	}
 }

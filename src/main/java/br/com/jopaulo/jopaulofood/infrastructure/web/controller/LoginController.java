@@ -14,6 +14,7 @@ public class LoginController {
 	
 	@GetMapping(path = "/login-error")
 	public String loginErro(Model model) {
+		model.addAttribute("msg", "E-mail e/ou senha incorreto");
 		return "login";
 	}
 }

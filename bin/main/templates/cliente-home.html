@@ -6,7 +6,8 @@ and open the template in the editor.
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	layout:decorate="~{layout}">
+	layout:decorate="~{layout}"
+	th:with="link=@{/cliente/home}">
 
 	<body>
 		<div layout:fragment="content">   
@@ -24,7 +25,7 @@ and open the template in the editor.
 	        <div id="divCategoriaGeral">
 	            <div id="divCategoriaOpcao" th:each="categoria : ${categorias}">
 	                <a href="#">
-	                    <img th:src="@{/images/categorias/} + @{categoria.imagem}" id="imgCategoriaComida"><br>
+	                    <img th:src="@{/images/categoria/} + ${categoria.imagem}" id="imgCategoriaComida"><br>
 	                    <span th:text="${categoria.nome}"></span>
 	                </a>
 	            </div>

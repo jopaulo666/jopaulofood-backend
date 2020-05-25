@@ -18,9 +18,13 @@ and open the template in the editor.
         <header>
             <div id="divLogoSis">
                 <span id="spanAlinahmentoVertical"></span>
-                <a href="@{/}">
+                <a th:href="${link} == null ? @{/} : ${link}">
                     <img th:src="@{/static/imagens/bf_logotipoSistema.png}" id="imgLogo">
                 </a>
+            </div>
+            
+           <div id="divUsuarioLogoado" th:if="${#authentication.principal != 'anonymousUser'}">
+                <span th:text="'Bem vindo, ' + ${#authentication.principal.usuario.nome} + '!'"></span>
             </div>
         </header>
         <br><br>

@@ -22,34 +22,10 @@ and open the template in the editor.
 	        </div><br><br>
 	
 	        <div id="divCategoriaGeral">
-	            <div id="divCategoriaOpcao">
+	            <div id="divCategoriaOpcao" th:each="categoria : ${categorias}">
 	                <a href="#">
-	                    <img src="static/imagens/sys_categoriaChurrasco.png" id="imgCategoriaComida"><br>
-	                    <span>Churrasco</span>
-	                </a>
-	            </div>
-	            <div id="divCategoriaOpcao">
-	                <a href="#">
-	                    <img src="static/imagens/sys_categoriaHamburguer.png" id="imgCategoriaComida"><br>
-	                    <span>Hamburguer</span>
-	                </a>
-	            </div>
-	            <div id="divCategoriaOpcao">
-	                <a href="#">
-	                    <img src="static/imagens/sys_categoriaPizza.png" id="imgCategoriaComida"><br>
-	                    <span>Pizza</span>
-	                </a>
-	            </div>
-	            <div id="divCategoriaOpcao">
-	                <a href="#">
-	                    <img src="static/imagens/sys_categoriaSalada.png" id="imgCategoriaComida"><br>
-	                    <span>Salada</span>
-	                </a>
-	            </div>
-	            <div id="divCategoriaOpcao">
-	                <a href="#">
-	                    <img src="static/imagens/sys_categoriaSobremesa.png"><br>
-	                    <span>Sobremesa</span>
+	                    <img th:src="@{/images/categorias/} + @{categoria.imagem}" id="imgCategoriaComida"><br>
+	                    <span th:text="${categoria.nome}"></span>
 	                </a>
 	            </div>
 	        </div>
